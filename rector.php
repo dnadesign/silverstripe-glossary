@@ -25,7 +25,7 @@ return RectorConfig::configure()
     ])
     ->withPhpSets()
     ->withSets([
-        SilverstripeLevelSetList::UP_TO_SILVERSTRIPE_54,
+        SilverstripeLevelSetList::UP_TO_SILVERSTRIPE_60,
         SilverstripeSetList::CODE_QUALITY,
     ])
     ->withSkip([

@@ -4,11 +4,7 @@ includes:
 parameters:
   level: 7
   treatPhpDocTypesAsCertain: false
+  reportUnmatchedIgnoredErrors: false
   paths:
     - _config.php
     - src
-  reportUnmatchedIgnoredErrors: false
-  ignoreErrors:
-    -
-      # Ignore these deprecation messages, to be addressed in 6.0
-      message: '#5\.4\.0 Will be (renamed|replaced)#'

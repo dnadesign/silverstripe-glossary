@@ -2,8 +2,8 @@
 
 namespace DNADesign\Glossary\Model;
 
-use SilverStripe\Forms\CompositeValidator;
-use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\Validation\CompositeValidator;
+use SilverStripe\Forms\Validation\RequiredFieldsValidator;
 use SilverStripe\ORM\DataObject;
 
 class TermDefinition extends DataObject
@@ -40,13 +40,13 @@ class TermDefinition extends DataObject
     /**
      * Required fields
      *
-     * @return CompositeValidator
+     * @return \SilverStripe\Forms\Validation\CompositeValidator
      */
     public function getCMSCompositeValidator(): CompositeValidator
     {
         $compositeValidator = parent::getCMSCompositeValidator();
 
-        $compositeValidator->addValidator(RequiredFields::create(['Content']));
+        $compositeValidator->addValidator(RequiredFieldsValidator::create(['Content']));
 
         return $compositeValidator;
     }

@@ -85,14 +85,14 @@ parameters:
 			path: src/Extensions/GlossaryTermContextExtension.php
 
 		-
-			message: '#^Parameter \#1 \$id of method SilverStripe\\ORM\\DataList\<DNADesign\\Glossary\\Model\\GlossaryTerm\>\:\:byID\(\) expects int, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Extensions/GlossaryTermContextExtension.php
-
-		-
 			message: '#^Call to an undefined method DNADesign\\Glossary\\Model\\TermDefinition&static\(DNADesign\\Glossary\\Extensions\\TermDefinitionContextExtension\)\:\:Contexts\(\)\.$#'
 			identifier: method.notFound
+			count: 1
+			path: src/Extensions/TermDefinitionContextExtension.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Extensions\\TermDefinitionContextExtension\:\:getContextsList\(\) should return SilverStripe\\ORM\\FieldType\\DBHTMLText but returns SilverStripe\\ORM\\FieldType\\DBField\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Extensions/TermDefinitionContextExtension.php
 
@@ -103,7 +103,7 @@ parameters:
 			path: src/Extensions/TermDefinitionContextExtension.php
 
 		-
-			message: '#^Parameter \#3 \$source of method SilverStripe\\Forms\\ListboxField\:\:create\(\) expects array, SilverStripe\\ORM\\Map given\.$#'
+			message: '#^Parameter \#3 \$source of method SilverStripe\\Forms\\ListboxField\:\:create\(\) expects array, SilverStripe\\Model\\List\\Map given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Extensions/TermDefinitionContextExtension.php
@@ -211,6 +211,12 @@ parameters:
 			path: src/Model/GlossaryTerm.php
 
 		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getLanguageName\(\) should return SilverStripe\\ORM\\FieldType\\DBText but returns SilverStripe\\ORM\\FieldType\\DBField\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
 			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getOptionsForCmsSelector\(\) has invalid return type DNADesign\\Glossary\\Model\\json\.$#'
 			identifier: class.notFound
 			count: 1
@@ -261,12 +267,6 @@ parameters:
 		-
 			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:toJSON\(\) should return DNADesign\\Glossary\\Model\\json but returns string\|false\.$#'
 			identifier: return.type
-			count: 1
-			path: src/Model/GlossaryTerm.php
-
-		-
-			message: '#^Parameter \#1 \$id of method SilverStripe\\ORM\\DataList\<static\(DNADesign\\Glossary\\Model\\GlossaryTerm\)\>\:\:byID\(\) expects int, int\|string given\.$#'
-			identifier: argument.type
 			count: 1
 			path: src/Model/GlossaryTerm.php
 

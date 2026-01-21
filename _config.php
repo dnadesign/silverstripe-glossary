@@ -6,8 +6,8 @@ use DNADesign\Glossary\Model\GlossaryTerm;
 use DNADesign\Glossary\Model\TermDefinition;
 use DNADesign\Glossary\Shortcodes\GlossaryTermShortcodeProvider;
 use SilverStripe\Core\Manifest\ModuleLoader;
-use SilverStripe\Forms\HTMLEditor\TinyMCEConfig;
 use SilverStripe\ORM\DB;
+use SilverStripe\TinyMCE\TinyMCEConfig;
 use SilverStripe\View\Parsers\ShortcodeParser;
 use SilverStripe\View\Requirements;
 
@@ -20,12 +20,15 @@ use SilverStripe\View\Requirements;
         if (GlossaryTerm::get()->count()) {
             foreach (GlossaryTerm::config()->get('editors') as $editor) {
                 // Enable insert-link to internal pages
-                TinyMCEConfig::get($editor)
+                /** @var TinyMCEConfig $config */
+                $config = TinyMCEConfig::get($editor);
+
+                $config
                     ->enablePlugins([
                         'glossary' => $module->getResource('client/js/tinymce/plugins/glossary/plugin.js'),
                     ])
-                ->addButtonsToLine(2, 'glossary');
-            }
+                    ->addButtonsToLine(2, 'glossary');
+                }
         }
 
         // Add necessary extension to allow user to manage term definition context
