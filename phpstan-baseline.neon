@@ -1,0 +1,415 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Parameter \#2 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, DNADesign\\Glossary\\Model\\json given\.$#'
+			identifier: argument.type
+			count: 2
+			path: _config.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Admins\\GlossaryAdmin\:\:getManagedModels\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Admin/GlossaryAdmin.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Admins\\GlossaryAdmin\:\:\$managed_models has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Admin/GlossaryAdmin.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Admins\\GlossaryAdmin\:\:\$menu_icon has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Admin/GlossaryAdmin.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Admins\\GlossaryAdmin\:\:\$menu_title has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Admin/GlossaryAdmin.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Admins\\GlossaryAdmin\:\:\$url_segment has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Admin/GlossaryAdmin.php
+
+		-
+			message: '#^Call to an undefined method DNADesign\\Glossary\\Model\\TermDefinition\:\:Contexts\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Call to function array_unique\(\) on a separate line has no effect\.$#'
+			identifier: function.resultUnused
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Extensions\\GlossaryTermContextExtension\:\:updateDefinitionsToDisplay\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Extensions\\GlossaryTermContextExtension\:\:updateDefinitionsToDisplay\(\) has parameter \$definitions with generic class SilverStripe\\ORM\\DataList but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Extensions\\GlossaryTermContextExtension\:\:updateDefinitionsToDisplay\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Extensions\\GlossaryTermContextExtension\:\:updateOptionsForCmsSelector\(\) has parameter \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Extensions\\GlossaryTermContextExtension\:\:updateSignaturedList\(\) has parameter \$codes with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Extensions\\GlossaryTermContextExtension\:\:updateSignaturedList\(\) has parameter \$list with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Parameter \#1 \$id of method SilverStripe\\ORM\\DataList\<DNADesign\\Glossary\\Model\\GlossaryTerm\>\:\:byID\(\) expects int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Extensions/GlossaryTermContextExtension.php
+
+		-
+			message: '#^Call to an undefined method DNADesign\\Glossary\\Model\\TermDefinition&static\(DNADesign\\Glossary\\Extensions\\TermDefinitionContextExtension\)\:\:Contexts\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Extensions/TermDefinitionContextExtension.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Extensions\\TermDefinitionContextExtension\:\:updateSummaryFields\(\) has parameter \$fields with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Extensions/TermDefinitionContextExtension.php
+
+		-
+			message: '#^Parameter \#3 \$source of method SilverStripe\\Forms\\ListboxField\:\:create\(\) expects array, SilverStripe\\ORM\\Map given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Extensions/TermDefinitionContextExtension.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Extensions\\TermDefinitionContextExtension\:\:\$many_many has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Extensions/TermDefinitionContextExtension.php
+
+		-
+			message: '#^Call to an undefined method object\:\:enabled\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Call to method count\(\) on an unknown class DNADesign\\Glossary\\Model\\DataList\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Default value of the parameter \#1 \$member \(false\) of method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:canDelete\(\) is incompatible with type SilverStripe\\Security\\Member\.$#'
+			identifier: parameter.defaultValue
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Default value of the parameter \#1 \$member \(false\) of method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:canEdit\(\) is incompatible with type SilverStripe\\Security\\Member\.$#'
+			identifier: parameter.defaultValue
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Default value of the parameter \#1 \$member \(false\) of method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:canView\(\) is incompatible with type SilverStripe\\Security\\Member\.$#'
+			identifier: parameter.defaultValue
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Iterating over an object of an unknown class DNADesign\\Glossary\\Model\\DataList\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:canCreate\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:canCreate\(\) should return bool but returns bool\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:canDelete\(\) should return bool but returns bool\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:canEdit\(\) should return bool but returns bool\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:canView\(\) should return bool but returns bool\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getAdditionalCmsSelectorFields\(\) has invalid return type DNADesign\\Glossary\\Model\\json\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getAdditionalCmsSelectorFields\(\) should return DNADesign\\Glossary\\Model\\json but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getByIdentifier\(\) should return DNADesign\\Glossary\\Model\\GlossaryTerm\|null but returns int\|static\(DNADesign\\Glossary\\Model\\GlossaryTerm\)\|string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getDefinitionsToDisplay\(\) has invalid return type DNADesign\\Glossary\\Model\\DataList\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getDefinitionsToDisplay\(\) has parameter \$args with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getOptionsForCmsSelector\(\) has invalid return type DNADesign\\Glossary\\Model\\json\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getOptionsForCmsSelector\(\) should return DNADesign\\Glossary\\Model\\json but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getSignaturesList\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getSourceService\(\) has invalid return type DNADesign\\Glossary\\Model\\TranslationService\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:getSourceService\(\) should return DNADesign\\Glossary\\Model\\TranslationService\|null but returns object\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:providePermissions\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:toJSON\(\) has invalid return type DNADesign\\Glossary\\Model\\json\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:toJSON\(\) has parameter \$args with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\GlossaryTerm\:\:toJSON\(\) should return DNADesign\\Glossary\\Model\\json but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Parameter \#1 \$id of method SilverStripe\\ORM\\DataList\<static\(DNADesign\\Glossary\\Model\\GlossaryTerm\)\>\:\:byID\(\) expects int, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Parameter \#3 \$children of method SilverStripe\\Forms\\ToggleCompositeField\:\:create\(\) expects array\|SilverStripe\\Forms\\FieldList, SilverStripe\\Forms\\LiteralField given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\GlossaryTerm\:\:\$db has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\GlossaryTerm\:\:\$default_sort has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\GlossaryTerm\:\:\$has_many has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\GlossaryTerm\:\:\$summary_fields has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\GlossaryTerm\:\:\$table_name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Variable \$options in empty\(\) is never defined\.$#'
+			identifier: empty.variable
+			count: 1
+			path: src/Model/GlossaryTerm.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\TermDefinition\:\:canCreate\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/TermDefinition.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinition\:\:\$db has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinition.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinition\:\:\$default_sort has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinition.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinition\:\:\$has_one has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinition.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinition\:\:\$summary_fields has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinition.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinition\:\:\$table_name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinition.php
+
+		-
+			message: '#^Variable \$sources in empty\(\) always exists and is not falsy\.$#'
+			identifier: empty.variable
+			count: 1
+			path: src/Model/TermDefinition.php
+
+		-
+			message: '#^Variable \$use in empty\(\) always exists and is not falsy\.$#'
+			identifier: empty.variable
+			count: 2
+			path: src/Model/TermDefinition.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\TermDefinitionContext\:\:canCreate\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/TermDefinitionContext.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Model\\TermDefinitionContext\:\:getOptionsForCmsSelector\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Model/TermDefinitionContext.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinitionContext\:\:\$belongs_many_many has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinitionContext.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinitionContext\:\:\$db has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinitionContext.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinitionContext\:\:\$plural_name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinitionContext.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinitionContext\:\:\$singular_name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinitionContext.php
+
+		-
+			message: '#^Property DNADesign\\Glossary\\Model\\TermDefinitionContext\:\:\$table_name has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: src/Model/TermDefinitionContext.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Shortcodes\\GlossaryTermShortcodeProvider\:\:handle_shortcode\(\) has parameter \$arguments with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Shortcodes/GlossaryTermShortcodeProvider.php
+
+		-
+			message: '#^Method DNADesign\\Glossary\\Shortcodes\\GlossaryTermShortcodeProvider\:\:handle_shortcode\(\) has parameter \$extra with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Shortcodes/GlossaryTermShortcodeProvider.php

@@ -9,11 +9,18 @@
   ],
   "license": "BSD-3-Clause",
   "require": {
+    "php": "^8.1",
+    "silverstripe/admin": "^2.4",
     "silverstripe/framework": "^5.0",
     "symbiote/silverstripe-gridfieldextensions": "^4.0"
   },
   "require-dev": {
-    "phpecs/phpecs": "^2.3"
+    "cambis/silverstan": "^2.1",
+    "cambis/silverstripe-rector": "^2.1",
+    "phpecs/phpecs": "^2.3",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.1",
+    "rector/rector": "^2.3"
   },
   "extra": {
     "expose": [
@@ -25,6 +32,7 @@
   "config": {
     "allow-plugins": {
       "composer/installers": true,
+      "phpstan/extension-installer": true,
       "silverstripe/vendor-plugin": true
     },
     "sort-packages": true

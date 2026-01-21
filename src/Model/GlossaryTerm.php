@@ -3,9 +3,7 @@
 namespace DNADesign\Glossary\Model;
 
 use DNADesign\Glossary\Shortcodes\GlossaryTermShortcodeProvider;
-use Psr\SimpleCache\CacheInterface;
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Forms\DropdownField;
+use Locale;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\LiteralField;
@@ -61,7 +59,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
                 if ($definitions) {
                     $config = $definitions->getConfig();
                     if ($config) {
-                        $config->addComponent(new GridFieldOrderableRows('Sort'));
+                        $config->addComponent(GridFieldOrderableRows::create('Sort'));
                         // Delete text definition rather than unlinking them
                         $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
                         $delete = $config->getComponentByType(GridFieldDeleteAction::class);
@@ -176,8 +174,8 @@ class GlossaryTerm extends DataObject implements PermissionProvider
      */
     public function getLanguageName()
     {
-        $locale = $this->Locale ? $this->Locale : '';
-        return DBField::create_field(DBText::class, \Locale::getDisplayLanguage($locale, i18n::get_locale()));
+        $locale = $this->Locale ?: '';
+        return DBField::create_field(DBText::class, Locale::getDisplayLanguage($locale, i18n::get_locale()));
     }
 
     /**
@@ -234,9 +232,9 @@ class GlossaryTerm extends DataObject implements PermissionProvider
 
         $params = [
             $glossaryTerms->count(),
-            strtotime($glossaryTerms->max('LastEdited') ?: ''),
+            strtotime((string) $glossaryTerms->max('LastEdited') ?: ''),
             $textDefinitions->count(),
-            strtotime($textDefinitions->max('LastEdited') ?: ''),
+            strtotime((string) $textDefinitions->max('LastEdited') ?: ''),
         ];
 
         $this->extend('updateCacheKeyParams', $params);
@@ -264,7 +262,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
      * but gives the opportunity to extensions to find the object with a different identifier pattern
      *
      * @param string|int $identifier
-     * @return Term
+     * @return ?GlossaryTerm
      */
     public static function getByIdentifier($identifier)
     {
@@ -340,41 +338,41 @@ class GlossaryTerm extends DataObject implements PermissionProvider
         return [
             'VIEW_DEFINITION' => [
                 'name' => _t(
-                    __CLASS__ . '.ViewDefinition',
+                    self::class . '.ViewDefinition',
                     'View Glossary Term Definitions',
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
+                    self::class . '.Category',
                     'Glossary',
                 ),
             ],
             'CREATE_DEFINITION' => [
                 'name' => _t(
-                    __CLASS__ . '.CreateDefinition',
+                    self::class . '.CreateDefinition',
                     'Create Glossary Term Definitions',
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
+                    self::class . '.Category',
                     'Glossary',
                 ),
             ],
             'EDIT_DEFINITION' => [
                 'name' => _t(
-                    __CLASS__ . '.EditDefinition',
+                    self::class . '.EditDefinition',
                     'Edit Glossary Term Definitions',
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
+                    self::class . '.Category',
                     'Glossary',
                 ),
             ],
             'DELETE_DEFINITION' => [
                 'name' => _t(
-                    __CLASS__ . '.DeleteDefinition',
+                    self::class . '.DeleteDefinition',
                     'Delete Glossary Term Definitions',
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
+                    self::class . '.Category',
                     'Glossary',
                 ),
             ],

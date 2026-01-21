@@ -4,13 +4,16 @@ namespace DNADesign\Glossary\Extensions;
 
 use DNADesign\Glossary\Model\TermDefinition;
 use DNADesign\Glossary\Model\TermDefinitionContext;
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ListboxField;
-use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 
-class TermDefinitionContextExtension extends DataExtension
+/**
+ * @extends Extension<TermDefinition&static>
+ */
+class TermDefinitionContextExtension extends Extension
 {
     private static $many_many = [
         'Contexts' => TermDefinitionContext::class,
@@ -28,9 +31,9 @@ class TermDefinitionContextExtension extends DataExtension
         $fields->removeByName('Contexts');
 
         // Show context selector only of parent is in a locale that requires context
-        if ($this->owner->requireContext()) {
+        if ($this->getOwner()->requireContext()) {
             $contexts = ListboxField::create('Contexts', 'Contexts', TermDefinitionContext::get()->map());
-            $fields->addFieldsToTab('Root.Main', $contexts);
+            $fields->addFieldToTab('Root.Main', $contexts);
         }
     }
 
@@ -54,7 +57,7 @@ class TermDefinitionContextExtension extends DataExtension
      */
     public function getContextsList()
     {
-        $list = $this->owner->Contexts()->column('Name');
+        $list = $this->getOwner()->Contexts()->column('Name');
         return DBField::create_field(DBHTMLText::class, implode(',', $list));
     }
 }

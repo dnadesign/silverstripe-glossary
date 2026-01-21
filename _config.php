@@ -44,4 +44,4 @@ use SilverStripe\View\Requirements;
 });
 // Initiate Short Code
 ShortcodeParser::get('default')
-    ->register('glossary', [GlossaryTermShortcodeProvider::class, 'handle_shortcode']);
+    ->register('glossary', GlossaryTermShortcodeProvider::handle_shortcode(...));
