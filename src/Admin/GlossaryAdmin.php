@@ -2,16 +2,15 @@
 
 namespace DNADesign\Glossary\Admins;
 
-use SilverStripe\Admin\ModelAdmin;
-use SilverStripe\Forms\LiteralField;
 use DNADesign\Glossary\Model\GlossaryTerm;
 use DNADesign\Glossary\Model\TermDefinition;
 use DNADesign\Glossary\Model\TermDefinitionContext;
+use SilverStripe\Admin\ModelAdmin;
 
 class GlossaryAdmin extends ModelAdmin
 {
     private static $managed_models = [
-        GlossaryTerm::class
+        GlossaryTerm::class,
     ];
 
     private static $url_segment = 'glossary';

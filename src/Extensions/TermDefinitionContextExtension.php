@@ -13,7 +13,7 @@ use SilverStripe\ORM\FieldType\DBHTMLText;
 class TermDefinitionContextExtension extends DataExtension
 {
     private static $many_many = [
-        'Contexts' => TermDefinitionContext::class
+        'Contexts' => TermDefinitionContext::class,
     ];
 
     /**

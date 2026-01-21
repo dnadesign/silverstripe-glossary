@@ -19,7 +19,7 @@ class GlossaryTermContextExtension extends Extension
     public function updateDefinitionsToDisplay(DataList &$definitions, $params = null)
     {
         if ($params
-            && is_array($params)
+            && \is_array($params)
             && isset($params['id'])
             && strpos($params['id'], '|') !== false) {
             $idParams = explode('|', $params['id']);
@@ -63,7 +63,7 @@ class GlossaryTermContextExtension extends Extension
                             if ($contexts && $contexts->exists()) {
                                 foreach ($contexts as $context) {
                                     $value = $id . '|' . $context->ID;
-                                    $text = sprintf('%s (%s)', $option['text'], $context->Name);
+                                    $text = \sprintf('%s (%s)', $option['text'], $context->Name);
                                     $alteredOptions[] = ['value' => $value, 'text' => $text];
                                 }
                             }
@@ -113,7 +113,7 @@ class GlossaryTermContextExtension extends Extension
                     $signatures = [];
                     foreach ($contexts as $context) {
                         foreach ($codes as $code) {
-                            $signatures[] = sprintf('<strong>%s</strong> [%s id="%s|%s"]%s[/%s]', $context->Name, $code, $this->owner->ID, $context->ID, $this->owner->Term, $code);
+                            $signatures[] = \sprintf('<strong>%s</strong> [%s id="%s|%s"]%s[/%s]', $context->Name, $code, $this->owner->ID, $context->ID, $this->owner->Term, $code);
                         }
                     }
                     $list = $signatures;

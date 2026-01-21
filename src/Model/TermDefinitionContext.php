@@ -2,7 +2,6 @@
 
 namespace DNADesign\Glossary\Model;
 
-use DNADesign\Glossary\Model\GlossaryTerm;
 use SilverStripe\ORM\DataObject;
 
 class TermDefinitionContext extends DataObject
@@ -14,11 +13,11 @@ class TermDefinitionContext extends DataObject
     private static $plural_name = 'Contexts';
 
     private static $db = [
-        'Name' => 'Varchar(255)'
+        'Name' => 'Varchar(255)',
     ];
 
     private static $belongs_many_many = [
-        'Definitions' => TermDefinition::class
+        'Definitions' => TermDefinition::class,
     ];
 
     public function getCMSFields()

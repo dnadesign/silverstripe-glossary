@@ -12,11 +12,11 @@ class TermDefinition extends DataObject
 
     private static $db = [
         'Content' => 'HTMLText',
-        'Sort' => 'Int'
+        'Sort' => 'Int',
     ];
 
     private static $has_one = [
-        'Term' => GlossaryTerm::class
+        'Term' => GlossaryTerm::class,
     ];
 
     private static $default_sort = 'Sort ASC';
@@ -31,7 +31,7 @@ class TermDefinition extends DataObject
 
         $fields->removeByName([
             'Sort',
-            'TermID'
+            'TermID',
         ]);
 
         return $fields;
@@ -90,9 +90,9 @@ class TermDefinition extends DataObject
 
         // Check that there is a sources available for the locale for which the context should be used
         $sources = GlossaryTerm::config()->get('sources');
-        if ($sources && is_array($sources) && !empty($sources)) {
+        if ($sources && \is_array($sources) && !empty($sources)) {
             $locales = array_intersect(array_values($use), array_keys($sources));
-            return count($locales) > 0;
+            return \count($locales) > 0;
         }
 
         return false;
