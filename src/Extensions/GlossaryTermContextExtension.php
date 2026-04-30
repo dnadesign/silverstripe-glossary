@@ -8,21 +8,21 @@ use DNADesign\Glossary\Model\TermDefinitionContext;
 use SilverStripe\Core\Extension;
 use SilverStripe\ORM\DataList;
 
+/**
+ * @extends Extension<GlossaryTerm&static>
+ */
 class GlossaryTermContextExtension extends Extension
 {
     /**
     * Alter the list of definitions that should be displayed when a TermDefinitionContext ID is supplied
-    *
-    * @param DataList
-    * @param array
     */
     public function updateDefinitionsToDisplay(DataList &$definitions, $params = null)
     {
         if ($params
-            && is_array($params)
+            && \is_array($params)
             && isset($params['id'])
-            && strpos($params['id'], '|') !== false) {
-            $idParams = explode('|', $params['id']);
+            && str_contains((string) $params['id'], '|')) {
+            $idParams = explode('|', (string) $params['id']);
             if ($idParams && isset($idParams[1])) {
                 $definitions = $definitions->filter('Contexts.ID', $idParams[1]);
             }
@@ -42,7 +42,7 @@ class GlossaryTermContextExtension extends Extension
     {
         $alteredOptions = [];
         foreach ($options as $option) {
-            $id = isset($option['value']) ? $option['value'] : null;
+            $id = $option['value'] ?? null;
             if (is_numeric($id)) {
                 if ($id === '0') {
                     $alteredOptions[] = $option;
@@ -63,7 +63,7 @@ class GlossaryTermContextExtension extends Extension
                             if ($contexts && $contexts->exists()) {
                                 foreach ($contexts as $context) {
                                     $value = $id . '|' . $context->ID;
-                                    $text = sprintf('%s (%s)', $option['text'], $context->Name);
+                                    $text = \sprintf('%s (%s)', $option['text'], $context->Name);
                                     $alteredOptions[] = ['value' => $value, 'text' => $text];
                                 }
                             }
@@ -88,8 +88,8 @@ class GlossaryTermContextExtension extends Extension
      */
     public function getByAlternateIdentifier(&$definition, $identifier)
     {
-        if ($definition === null && strpos($identifier, '|') !== false) {
-            $idParams = explode('|', $identifier);
+        if ($definition === null && str_contains((string) $identifier, '|')) {
+            $idParams = explode('|', (string) $identifier);
             if (isset($idParams[0]) && is_numeric($idParams[0])) {
                 $definition =  GlossaryTerm::get()->byID($idParams[0]);
             }
@@ -107,13 +107,13 @@ class GlossaryTermContextExtension extends Extension
     public function updateSignaturedList(&$list, $codes)
     {
         if (TermDefinition::contexts_in_use()) {
-            if ($this->owner->Definitions()->exists()) {
-                $contexts = TermDefinitionContext::get()->filter('Definitions.ID', $this->owner->Definitions()->column('ID'));
+            if ($this->getOwner()->Definitions()->exists()) {
+                $contexts = TermDefinitionContext::get()->filter('Definitions.ID', $this->getOwner()->Definitions()->column('ID'));
                 if ($contexts && $contexts->exists()) {
                     $signatures = [];
                     foreach ($contexts as $context) {
                         foreach ($codes as $code) {
-                            $signatures[] = sprintf('<strong>%s</strong> [%s id="%s|%s"]%s[/%s]', $context->Name, $code, $this->owner->ID, $context->ID, $this->owner->Term, $code);
+                            $signatures[] = \sprintf('<strong>%s</strong> [%s id="%s|%s"]%s[/%s]', $context->Name, $code, $this->getOwner()->ID, $context->ID, $this->getOwner()->Term, $code);
                         }
                     }
                     $list = $signatures;

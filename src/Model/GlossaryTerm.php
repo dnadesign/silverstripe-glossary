@@ -2,11 +2,8 @@
 
 namespace DNADesign\Glossary\Model;
 
-use DNADesign\Glossary\Model\TermDefinition;
 use DNADesign\Glossary\Shortcodes\GlossaryTermShortcodeProvider;
-use Psr\SimpleCache\CacheInterface;
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\Forms\DropdownField;
+use Locale;
 use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\LiteralField;
@@ -30,7 +27,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
     ];
 
     private static $has_many = [
-        'Definitions' => TermDefinition::class
+        'Definitions' => TermDefinition::class,
     ];
 
     //TODO: locales
@@ -43,7 +40,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
         'Term' => 'Term',
         //TODO: locales
         // 'getLanguageName' => 'Language',
-        'Definitions.Count' => 'Definitions #'
+        'Definitions.Count' => 'Definitions #',
     ];
 
     private static $default_sort = 'Term ASC';
@@ -62,7 +59,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
                 if ($definitions) {
                     $config = $definitions->getConfig();
                     if ($config) {
-                        $config->addComponent(new GridFieldOrderableRows('Sort'));
+                        $config->addComponent(GridFieldOrderableRows::create('Sort'));
                         // Delete text definition rather than unlinking them
                         $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
                         $delete = $config->getComponentByType(GridFieldDeleteAction::class);
@@ -76,7 +73,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
                 }
 
                 // Signatures
-                $list = sprintf('<div class="field">%s</div>', implode('<br/>', $this->getSignaturesList()));
+                $list = \sprintf('<div class="field">%s</div>', implode('<br/>', $this->getSignaturesList()));
                 $signatures = ToggleCompositeField::create('Signatures', 'Shortcodes Signatures', LiteralField::create('SignaturesList', $list));
                 $fields->addFieldToTab('Root.Main', $signatures);
             }
@@ -124,7 +121,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
     {
         if ($this->Locale) {
             $sources = $this->config()->get('sources');
-            if ($sources && is_array($sources) && isset($sources[$this->Locale])) {
+            if ($sources && \is_array($sources) && isset($sources[$this->Locale])) {
                 $class = $sources[$this->Locale];
                 $service = new $class();
                 if ($service->enabled()) {
@@ -177,8 +174,8 @@ class GlossaryTerm extends DataObject implements PermissionProvider
      */
     public function getLanguageName()
     {
-        $locale = $this->Locale ? $this->Locale : '';
-        return DBField::create_field(DBText::class, \Locale::getDisplayLanguage($locale, i18n::get_locale()));
+        $locale = $this->Locale ?: '';
+        return DBField::create_field(DBText::class, Locale::getDisplayLanguage($locale, i18n::get_locale()));
     }
 
     /**
@@ -202,7 +199,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
         if (empty($options)) {
             if ($definitions->count() > 0) {
                 $options = [
-                    ['value' => "0", 'text' => 'Select a word']
+                    ['value' => "0", 'text' => 'Select a word'],
                 ];
 
                 foreach ($definitions as $desc) {
@@ -235,9 +232,9 @@ class GlossaryTerm extends DataObject implements PermissionProvider
 
         $params = [
             $glossaryTerms->count(),
-            strtotime($glossaryTerms->max('LastEdited')?:''),
+            strtotime((string) $glossaryTerms->max('LastEdited') ?: ''),
             $textDefinitions->count(),
-            strtotime($textDefinitions->max('LastEdited')?:''),
+            strtotime((string) $textDefinitions->max('LastEdited') ?: ''),
         ];
 
         $this->extend('updateCacheKeyParams', $params);
@@ -265,7 +262,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
      * but gives the opportunity to extensions to find the object with a different identifier pattern
      *
      * @param string|int $identifier
-     * @return Term
+     * @return ?GlossaryTerm
      */
     public static function getByIdentifier($identifier)
     {
@@ -292,7 +289,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
 
         $codes = GlossaryTermShortcodeProvider::get_shortcodes();
         foreach ($codes as $code) {
-            $signature = sprintf('[%s id="%s"]%s[/%s]', $code, $this->ID, $this->Term, $code);
+            $signature = \sprintf('[%s id="%s"]%s[/%s]', $code, $this->ID, $this->Term, $code);
             $list[] = $signature;
         }
 
@@ -312,7 +309,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
         $data = [
             'id' => $this->ID,
             'term' => $this->Term,
-            'lang' => $this->getLanguageName()->Raw()
+            'lang' => $this->getLanguageName()->Raw(),
         ];
 
         $definitionsToDisplay = $this->getDefinitionsToDisplay($args);
@@ -323,7 +320,7 @@ class GlossaryTerm extends DataObject implements PermissionProvider
             foreach ($definitionsToDisplay as $definition) {
                 $definitions[] = [
                     'id' => $definition->ID,
-                    'content' => $definition->Content
+                    'content' => $definition->Content,
                 ];
             }
 
@@ -339,46 +336,46 @@ class GlossaryTerm extends DataObject implements PermissionProvider
     public function providePermissions()
     {
         return [
-            'VIEW_DEFINITION' => array(
+            'VIEW_DEFINITION' => [
                 'name' => _t(
-                    __CLASS__ . '.ViewDefinition',
-                    'View Glossary Term Definitions'
+                    self::class . '.ViewDefinition',
+                    'View Glossary Term Definitions',
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
-                    'Glossary'
-                )
-            ),
-            'CREATE_DEFINITION' => array(
+                    self::class . '.Category',
+                    'Glossary',
+                ),
+            ],
+            'CREATE_DEFINITION' => [
                 'name' => _t(
-                    __CLASS__ . '.CreateDefinition',
-                    'Create Glossary Term Definitions'
+                    self::class . '.CreateDefinition',
+                    'Create Glossary Term Definitions',
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
-                    'Glossary'
-                )
-            ),
-            'EDIT_DEFINITION' => array(
+                    self::class . '.Category',
+                    'Glossary',
+                ),
+            ],
+            'EDIT_DEFINITION' => [
                 'name' => _t(
-                    __CLASS__ . '.EditDefinition',
-                    'Edit Glossary Term Definitions'
+                    self::class . '.EditDefinition',
+                    'Edit Glossary Term Definitions',
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
-                    'Glossary'
-                )
-            ),
-            'DELETE_DEFINITION' => array(
+                    self::class . '.Category',
+                    'Glossary',
+                ),
+            ],
+            'DELETE_DEFINITION' => [
                 'name' => _t(
-                    __CLASS__ . '.DeleteDefinition',
-                    'Delete Glossary Term Definitions'
+                    self::class . '.DeleteDefinition',
+                    'Delete Glossary Term Definitions',
                 ),
                 'category' => _t(
-                    __CLASS__ . '.Category',
-                    'Glossary'
-                )
-            )
+                    self::class . '.Category',
+                    'Glossary',
+                ),
+            ],
         ];
     }
 

@@ -32,7 +32,7 @@ class GlossaryTermShortcodeProvider implements ShortcodeHandler
                     ->customise([
                         'Content' => $content,
                         'DefinitionsToDisplay' => $glossaryTerm->getDefinitionsToDisplay($arguments),
-                        'JSON' =>  $glossaryTerm->toJSON($arguments)
+                        'JSON' =>  $glossaryTerm->toJSON($arguments),
                     ])
                     ->renderWith('DNADesign\\Glossary\\TermDefinition');
 
